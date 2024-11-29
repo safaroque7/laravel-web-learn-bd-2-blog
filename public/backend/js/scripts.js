@@ -24,3 +24,10 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+
+
+$('#name').on('input', function(){
+    let value = $(this).val()
+    $('#slug').val(value)
+});

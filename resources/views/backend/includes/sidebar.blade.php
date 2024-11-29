@@ -69,6 +69,13 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Tables
                 </a>
+
+                <a class="nav-link" href="{{ route('category.create') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    Category
+                </a>
+
+
             </div>
         </div>
         <div class="sb-sidenav-footer">
