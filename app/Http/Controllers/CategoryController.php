@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('backend.pages.modules.category.index', compact('categories'));
     }
 
     /**
@@ -29,16 +30,19 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        $data = $request->all();
+        return $data = $request->all();
+
         $category = Category::latest()->first();
         if($category){
-            $data['slug'] = $category->slug + 1;
+            $data['slug_id'] = $category->slug_id + 1;
         } else {
-            $data['slug'] = 100000;
+            $data['slug_id'] = 100000;
         }
         Category::create($data);
+        session()->flash('msg', 'Category created successfully');
+        session()->flash('class', 'success');
         
-        return redirect()->back();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -46,7 +50,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('backend.pages.modules.category.show', compact('category'));
     }
 
     /**
@@ -54,22 +58,34 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('backend.pages.modules.category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
+  
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+
+        dd($request);
+
+        $category->update($request->all());
+        session()->flash('msg', 'Category updated successfully');
+        session()->flash('class', 'success');
+        return redirect()->route('category.index');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        session()->flash('msg', 'Category deleted successfully');
+        session()->flash('class', 'warning');
+        return redirect()->route('category.index');
     }
 }
