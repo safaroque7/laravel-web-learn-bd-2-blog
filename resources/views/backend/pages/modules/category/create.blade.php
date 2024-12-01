@@ -29,7 +29,7 @@
                     @csrf
                     <div class="mb-md-4 md-2">
                         <label for="name" class="form-label fw-bold"> Category Name </label>
-                        <input type="text" name="name" id="name" class="form-control">
+                        <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
                         @error('name')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
@@ -37,9 +37,9 @@
                     </div>
 
                     <div class="mb-md-4 md-2">
-                        <label for="slug" class="form-label fw-bold"> Category Slug </label>
-                        <input type="text" name="slug" id="slug" class="form-control">
-                        @error('slug')
+                        <label for="slug-name" class="form-label fw-bold"> Slug Name </label>
+                        <input type="text" name="slug_name" id="slug-name" class="form-control">
+                        @error('slug_name')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
                         @enderror
@@ -61,19 +61,14 @@
 
                     <div class="mb-md-4 md-2">
                         <label for="serial" class="form-label fw-bold"> Category Serial </label>
-                        <select name="serial" id="serial" class="form-control">
-                            <option> Select category serial </option>
-                            <option value="1"> 1 </option>
-                            <option value="2"> 2 </option>
-                            <option value="3"> 3 </option>
-                        </select>
+                        <input type="number" name="serial" id="serial" class="form-control" value="{{ old('serial') }}">
                         @error('serial')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
                         @enderror
                     </div>
 
-                    <button class="btn btn-primary btn-sm">Create Category</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Create Category</button>
                     <a href="{{ route('category.index') }}" class="btn btn-secondary btn-sm"> Back </a>
                 </form>
 
@@ -82,10 +77,11 @@
                         $('#name').on('input', function() {
                             let value = $(this).val()
                             value = value.replace(' ', '-').toLowerCase()
-                            $('#slug').val(value)
+                            $('#slug-name').val(value)
                         });
                     </script>
                 @endpush
+
             </div>
         </div>
     </div>

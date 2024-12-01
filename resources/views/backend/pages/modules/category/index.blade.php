@@ -1,25 +1,25 @@
 @extends('backend.layout.master')
 
+{{-- @section('page_title', 'Category List') --}}
+
 @section('category')
     <div class="col-md-12">
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <h2> Category List </h2>
+                <a href="{{ route('category.create') }}"> <button class="btn btn-secondary rounded-circle"> <i
+                            class="fa-solid fa-plus"></i> </button> </a>
             </div>
             <div class="card-body">
 
-                {{-- @foreach ($categories as $categorie)
-                    {{ __($categorie->name) }}
-                @endforeach --}}
-
-                <table class="table table-bordered table-striped table-hover table-sm">
+                <table class="table table-bordered table-striped mb-0 table-hover table-sm">
                     <thead>
                         <tr>
                             <th class="text-center"> SL </th>
                             <th class="text-center"> Category Name </th>
-                            <th class="text-center"> Slug </th>
-                            <th class="text-center"> Status ID </th>
+                            <th class="text-center"> Slug Name </th>
+                            <th class="text-center"> Slug ID </th>
                             <th class="text-center"> Status </th>
                             <th class="text-center"> Order By </th>
                             <th class="text-center"> Created At </th>
@@ -35,32 +35,35 @@
                             <tr>
                                 <td> {{ __($sl++) }} </td>
                                 <td> {{ __($category->name) }} </td>
-                                <td> {{ __($category->slug) }} </td>
+                                <td> {{ __($category->slug_name) }} </td>
                                 <td> {{ __($category->slug_id) }} </td>
                                 <td> {{ __($category->status == 1 ? 'Published' : 'Unpublished') }} </td>
                                 <td> {{ __($category->serial) }} </td>
                                 <td> {{ $category->created_at->format('Y-m-d  H:i:s') }} </td>
                                 <td> {{ $category->updated_at == $category->created_at ? 'Not updated' : $category->updated_at->format('Y-m-d H:i:s') }}
                                 </td>
-                                <td>
-                                    <a href="{{ route('category.show', $category->id ) }}">
-                                        <button class="btn btn-info btn-sm text-white"> 
-                                            <i class="fa-solid fa-eye"></i> 
-                                        </button> 
+                                <td class="d-flex justify-content-evenly">
+                                    <a href="{{ route('category.show', $category->id) }}">
+                                        <button class="btn btn-info btn-sm text-white">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
                                     </a>
-                                    <a href="{{ route('category.edit', $category->id) }}"> 
-                                        <button type="submit" class="btn btn-warning btn-sm"> 
-                                            <i class="fa-solid fa-edit"></i> 
-                                        </button> 
+                                    <a href="{{ route('category.edit', $category->id) }}">
+                                        <button class="btn btn-warning btn-sm">
+                                            <i class="fa-solid fa-edit"></i>
+                                        </button>
                                     </a>
 
-                                    <form action="{{ route('category.destroy', $category->id) }}" class="d-inline" method="delete">
+                                    <form action="{{ route('category.destroy', $category->id) }}" class="d-inline"
+                                        method="POST">
                                         @csrf
-                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this item?')" class="btn btn-danger btn-sm"> 
-                                            <i class="fa-solid fa-trash"></i> 
-                                        </button> 
+                                        @method('DELETE')
+                                        <button onclick="return confirm('Are you sure you want to delete this item?')"
+                                            class="btn btn-danger btn-sm">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
                                     </form>
-                                    
+
                                 </td>
                             </tr>
                         @endforeach
@@ -78,8 +81,8 @@
             <script>
                 Swal.fire({
                     position: "top-end",
-                    icon: "<?php echo session('class') ?>",
-                    title: "<?php echo session('msg') ?>",
+                    icon: "<?php echo session('class'); ?>",
+                    title: "<?php echo session('msg'); ?>",
                     toast: true,
                     showConfirmButton: false,
                     timer: 5000

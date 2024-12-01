@@ -13,6 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        // return 'My name is Bayzid, Senior Software Engineer';
         $categories = Category::all();
         return view('backend.pages.modules.category.index', compact('categories'));
     }
@@ -29,21 +30,30 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreCategoryRequest $request)
-    {
-        return $data = $request->all();
+{
+    // Retrieve all data from the request
+    $data = $request->all();
 
-        $category = Category::latest()->first();
-        if($category){
-            $data['slug_id'] = $category->slug_id + 1;
-        } else {
-            $data['slug_id'] = 100000;
-        }
-        Category::create($data);
-        session()->flash('msg', 'Category created successfully');
-        session()->flash('class', 'success');
-        
-        return redirect()->route('category.index');
+    // Find the latest category to determine the next slug_id
+    $category = Category::latest()->first();
+
+    if ($category) {
+        $data['slug_id'] = $category->slug_id + 1;
+    } else {
+        $data['slug_id'] = 100000;
     }
+
+    // Create the new category using the provided data
+    Category::create($data);
+
+    // Flash a success message to the session
+    session()->flash('msg', 'Category created successfully');
+    session()->flash('class', 'success');
+    
+    // Redirect to the category index page
+    return redirect()->route('category.index');
+}
+
 
     /**
      * Display the specified resource.
@@ -67,8 +77,6 @@ class CategoryController extends Controller
   
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-
-        dd($request);
 
         $category->update($request->all());
         session()->flash('msg', 'Category updated successfully');

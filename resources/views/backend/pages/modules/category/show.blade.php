@@ -24,8 +24,8 @@
                     </tr>
 
                     <tr>
-                        <th> Slug </th>
-                        <td> {{ $category->slug }} </td>
+                        <th> Slug Name </th>
+                        <td> {{ $category->slug_name }} </td>
                     </tr>
 
                     <tr>

@@ -24,10 +24,9 @@
                 @endif
 
 
-                <form action="{{ route('category.update', $category->id) }}" method="PUT">
+                <form action="{{ route('category.update', $category->id) }}" method="POST">
                     @csrf
-                    @method('PUT') <!-- Add the method override for PUT -->
-
+                    @method('PUT') <!-- This is the correct way to spoof a PUT request -->
                     <div class="mb-md-4 md-2">
                         <label for="name" class="form-label fw-bold"> Category Name </label>
                         <input type="text" name="name" value="{{ __($category->name) }}" id="name"
@@ -39,10 +38,10 @@
                     </div>
 
                     <div class="mb-md-4 md-2">
-                        <label for="slug" class="form-label fw-bold"> Category Slug </label>
-                        <input type="text" name="slug" value="{{ __($category->slug) }}" id="slug"
+                        <label for="slug-name" class="form-label fw-bold"> Slug Name </label>
+                        <input type="text" name="slug_name" value="{{ __($category->slug_name) }}" id="slug-name"
                             class="form-control">
-                        @error('slug')
+                        @error('slug_name')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
                         @enderror
@@ -76,9 +75,20 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-warning">Update Category</button>
+                    <button class="btn btn-warning btn-sm"> Update Category Button </button>
                     <a href="{{ route('category.index') }}" class="btn btn-secondary btn-sm"> Back </a>
                 </form>
+
+                @push('script')
+                    <script>
+                        $('#name').on('input', function() {
+                            let value = $(this).val()
+                            value = value.replace(' ', '-').toLowerCase()
+                            $('#slug-name').val(value)
+                        });
+                    </script>
+                @endpush
+
             </div>
         </div>
     </div>

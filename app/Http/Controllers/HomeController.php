@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // return 'Dashboard will be shown here';
+        return view('backend.pages.index');
     }
 }
