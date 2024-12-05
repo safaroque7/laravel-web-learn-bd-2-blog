@@ -18,10 +18,9 @@
                         <tr>
                             <th class="text-center"> SL </th>
                             <th class="text-center"> Category Name </th>
-                            <th class="text-center"> Slug Name </th>
-                            <th class="text-center"> Slug ID </th>
+                            <th class="text-center"> Slug </th>
                             <th class="text-center"> Status </th>
-                            <th class="text-center"> Order By </th>
+                            <th class="text-center"> Serial </th>
                             <th class="text-center"> Created At </th>
                             <th class="text-center"> Updated At </th>
                             <th class="text-center"> Action </th>
@@ -35,8 +34,7 @@
                             <tr>
                                 <td> {{ __($sl++) }} </td>
                                 <td> {{ __($category->name) }} </td>
-                                <td> {{ __($category->slug_name) }} </td>
-                                <td> {{ __($category->slug_id) }} </td>
+                                <td> {{ __($category->slug) }} </td>
                                 <td> {{ __($category->status == 1 ? 'Published' : 'Unpublished') }} </td>
                                 <td> {{ __($category->serial) }} </td>
                                 <td> {{ $category->created_at->format('Y-m-d  H:i:s') }} </td>

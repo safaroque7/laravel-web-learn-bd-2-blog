@@ -38,8 +38,8 @@
 
                     <div class="mb-md-4 md-2">
                         <label for="slug-name" class="form-label fw-bold"> Slug Name </label>
-                        <input type="text" name="slug_name" id="slug-name" class="form-control">
-                        @error('slug_name')
+                        <input type="text" name="slug" id="slug-name" class="form-control">
+                        @error('slug')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
                         @enderror
@@ -48,7 +48,7 @@
                     <div class="mb-md-4 md-2">
                         <label for="status" class="form-label fw-bold"> Category Status </label>
                         <select name="status" id="status" class="form-control">
-                            <option> -- Select category Status -- </option>
+                            <option value="" disableed selected> -- Select category Status -- </option>
                             <option value="1"> Publish </option>
                             <option value="0"> Unpublish </option>
                             <option value="3"> Draft </option>

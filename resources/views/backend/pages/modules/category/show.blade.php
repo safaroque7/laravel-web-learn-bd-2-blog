@@ -25,12 +25,12 @@
 
                     <tr>
                         <th> Slug Name </th>
-                        <td> {{ $category->slug_name }} </td>
+                        <td> {{ $category->slug }} </td>
                     </tr>
 
                     <tr>
                         <th> Slug ID </th>
-                        <td> {{ $category->slug_id }} </td>
+                        <td> {{ $category->serial }} </td>
                     </tr>
 
                     <tr>

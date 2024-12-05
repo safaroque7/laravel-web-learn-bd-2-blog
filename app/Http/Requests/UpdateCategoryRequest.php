@@ -23,8 +23,8 @@ class UpdateCategoryRequest extends FormRequest
     // {
     //     return [
     //         'name' => 'required|min:3|max:255',
-    //         'slug_name' => 'required|min:3|max:255|unique:categories,slug_name,' . $this->category->id,
-    //         'slug_id' => 'required',
+    //         'slug' => 'required|min:3|max:255|unique:categories,slug,' . $this->category->id,
+    //         'serial' => 'required',
     //         'status' => 'required',
     //         'serial' => 'required|numeric',
     //     ];
@@ -35,9 +35,9 @@ class UpdateCategoryRequest extends FormRequest
 {
     return [
         'name' => 'required|min:3|max:255',
-        'slug_name' => 'required|min:3|max:255|unique:categories,slug_name,' . $this->category->id,
+        'slug' => 'required|min:3|max:255|unique:categories,slug,' . $this->category->id,
         'status' => 'required',
-        'serial' => 'required|numeric',
+        'serial' => 'required|numeric|unique:categories,serial,' . $this->category->id,
     ];
 }
 

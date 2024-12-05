@@ -39,9 +39,9 @@
 
                     <div class="mb-md-4 md-2">
                         <label for="slug-name" class="form-label fw-bold"> Slug Name </label>
-                        <input type="text" name="slug_name" value="{{ __($category->slug_name) }}" id="slug-name"
+                        <input type="text" name="slug" value="{{ __($category->slug) }}" id="slug-name"
                             class="form-control">
-                        @error('slug_name')
+                        @error('slug')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
                         @enderror
@@ -63,12 +63,8 @@
 
                     <div class="mb-md-4 md-2">
                         <label for="serial" class="form-label fw-bold"> Category Serial </label>
-                        <select name="serial" id="serial" class="form-control">
-                            <option value="" disabled>Select category serial</option>
-                            <option value="1" {{ $category->serial == 1 ? 'selected' : '' }}> 1 </option>
-                            <option value="2" {{ $category->serial == 2 ? 'selected' : '' }}> 2 </option>
-                            <option value="3" {{ $category->serial == 3 ? 'selected' : '' }}> 3 </option>
-                        </select>
+                        <input type="number" name="serial" value="{{ __($category->serial) }}" id="serial" class="form-control">
+                        
                         @error('serial')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>

@@ -34,13 +34,13 @@ class CategoryController extends Controller
     // Retrieve all data from the request
     $data = $request->all();
 
-    // Find the latest category to determine the next slug_id
+    // Find the latest category to determine the next serial
     $category = Category::latest()->first();
 
     if ($category) {
-        $data['slug_id'] = $category->slug_id + 1;
+        $data['serial'] = $category->serial + 1;
     } else {
-        $data['slug_id'] = 100000;
+        $data['serial'] = 100000;
     }
 
     // Create the new category using the provided data
