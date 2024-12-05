@@ -8,8 +8,14 @@
 
 
 
+
+
 $('.homeSlider').slick({
-   slidesToShow: 2,
+   slidesToShow: 1,
    infinite: true,
-   slidesToScroll: true,
+   slidesToScroll: 1, // Corrected from 'true' to '1'
+   autoplay: true,
+   autoplaySpeed: 2000, // Optional: Adjust the autoplay speed (in milliseconds)
+   prevArrow: $('.prev'),
+   nextArrow: $('.next'),
 });

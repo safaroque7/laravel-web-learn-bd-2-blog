@@ -11,11 +11,12 @@
         <div class="row">
             <div class="col-md-12 mx-auto">
                 <div class="homeSlider">
-                    <div> <img src="{{ asset('images/01.jpg') }}" alt="Photo" class="img-fluid"> </div>
-                    <div> <img src="{{ asset('images/02.jpg') }}" alt="Photo" class="img-fluid"> </div>
-                    <div> <img src="{{ asset('images/03.jpg') }}" alt="Photo" class="img-fluid"> </div>
-                    <div> <img src="{{ asset('images/04.jpg') }}" alt="Photo" class="img-fluid"> </div>
-                    <div> <img src="{{ asset('images/05.jpg') }}" alt="Photo" class="img-fluid"> </div>
+                    <div> <img src="https://picsum.photos/id/100/1300/400" alt="Photo" class="img-fluid"> </div>
+                    <div> <img src="https://picsum.photos/id/200/1300/400" alt="Photo" class="img-fluid"> </div>
+                    <div> <img src="https://picsum.photos/id/800/1300/400" alt="Photo" class="img-fluid"> </div>
+                    <div> <img src="https://picsum.photos/id/400/1300/400" alt="Photo" class="img-fluid"> </div>
+                    <div> <img src="https://picsum.photos/id/500/1300/400" alt="Photo" class="img-fluid"> </div>
+                    
                 </div>
             </div>
         </div>
