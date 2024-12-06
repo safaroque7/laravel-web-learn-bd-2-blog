@@ -6,6 +6,7 @@ use App\Http\Controllers\BackController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SubCategoryController;
 use League\CommonMark\Extension\FrontMatter\FrontMatterParser;
 
 Route::get('/', function () {
@@ -25,6 +26,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function(){
     // Route::get('/dashboard/category/{category}', [CategoryController::class, 'delete'])->name('category.delete');
     
     Route::resource('category', CategoryController::class);
+    Route::resource('sub-categories', SubCategoryController::class);
 });
 
 Auth::routes();

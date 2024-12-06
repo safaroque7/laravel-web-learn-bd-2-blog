@@ -6,7 +6,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h2> Create Category </h2>
+                <h2> Create Sub Category </h2>
             </div>
             <div class="card-body">
 
@@ -25,12 +25,30 @@
                 @endif
 
 
-                <form action="{{ route('category.store') }}" method="POST">
+                <form action="{{ route('sub-categories.store') }}" method="POST">
                     @csrf
+
                     <div class="mb-md-4 md-2">
-                        <label for="name" class="form-label fw-bold"> Category Name </label>
-                        <input type="text" name="category_name" id="name" class="form-control" value="{{ old('category_name') }}">
-                        @error('name')
+                        <label for="category-name" class="form-label fw-bold"> Category Name </label>
+                        <select name="category_name" id="category-name" class="form-control">
+                            <option value="" disableed selected> -- Select Category -- </option>
+                            @foreach ($allCategoryNames as $id => $category_name)
+                                <option value="{{ __($category_name) }}"> {{ __($category_name) }} </option>
+                            @endforeach
+                        </select>
+
+                        @error('category_name')
+                            <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
+                                {{ $message }} </div>
+                        @enderror
+                    </div>
+
+
+                    <div class="mb-md-4 md-2">
+                        <label for="name" class="form-label fw-bold"> Sub Category Name sss </label>
+                        <input type="text" name="sub_category_name" id="name" class="form-control"
+                            value="{{ old('sub_category_name') }}">
+                        @error('sub_category_name')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
                         @enderror
@@ -46,9 +64,9 @@
                     </div>
 
                     <div class="mb-md-4 md-2">
-                        <label for="status" class="form-label fw-bold"> Category Status </label>
+                        <label for="status" class="form-label fw-bold"> Sub Category Status </label>
                         <select name="status" id="status" class="form-control">
-                            <option value="" disableed selected> -- Select category Status -- </option>
+                            <option value="" disableed selected> -- Select Sub Category Status -- </option>
                             <option value="1"> Publish </option>
                             <option value="0"> Unpublish </option>
                             <option value="3"> Draft </option>
@@ -60,15 +78,16 @@
                     </div>
 
                     <div class="mb-md-4 md-2">
-                        <label for="serial" class="form-label fw-bold"> Category Serial </label>
-                        <input type="number" name="serial" id="serial" class="form-control" value="{{ old('serial') }}">
+                        <label for="serial" class="form-label fw-bold"> Sub Category Serial </label>
+                        <input type="number" name="serial" id="serial" class="form-control"
+                            value="{{ old('serial') }}">
                         @error('serial')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-sm">Create Category</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Create Sub Category</button>
                     <a href="{{ route('category.index') }}" class="btn btn-secondary btn-sm"> Back </a>
                 </form>
 

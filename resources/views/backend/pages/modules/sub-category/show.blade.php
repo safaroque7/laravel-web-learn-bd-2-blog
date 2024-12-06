@@ -20,7 +20,7 @@
 
                     <tr>
                         <th> Name </th>
-                        <td> {{ $category->category_name }} </td>
+                        <td> {{ $category->name }} </td>
                     </tr>
 
                     <tr>

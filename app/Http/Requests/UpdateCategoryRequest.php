@@ -34,7 +34,7 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
 {
     return [
-        'name' => 'required|min:3|max:255',
+        'category_name' => 'required|min:3|max:255',
         'slug' => 'required|min:3|max:255|unique:categories,slug,' . $this->category->id,
         'status' => 'required',
         'serial' => 'required|numeric|unique:categories,serial,' . $this->category->id,

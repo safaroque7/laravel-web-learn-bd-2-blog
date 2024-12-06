@@ -29,9 +29,9 @@
                     @method('PUT') <!-- This is the correct way to spoof a PUT request -->
                     <div class="mb-md-4 md-2">
                         <label for="name" class="form-label fw-bold"> Category Name </label>
-                        <input type="text" name="name" value="{{ __($category->name) }}" id="name"
+                        <input type="text" name="category_name" value="{{ __($category->category_name) }}" id="name"
                             class="form-control">
-                        @error('name')
+                        @error('category_name')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>
                                 {{ $message }} </div>
                         @enderror

@@ -7,7 +7,7 @@
 
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h2> Category List </h2>
+                <h2> Sub Category List </h2>
                 <a href="{{ route('category.create') }}"> <button class="btn btn-secondary rounded-circle"> <i
                             class="fa-solid fa-plus"></i> </button> </a>
             </div>
@@ -30,15 +30,15 @@
                         @php
                             $sl = 1;
                         @endphp
-                        @foreach ($categories as $category)
+                        @foreach ($subCategoriesCollection as $subCategoriesItem)
                             <tr>
                                 <td> {{ __($sl++) }} </td>
-                                <td> {{ __($category->category_name) }} </td>
-                                <td> {{ __($category->slug) }} </td>
-                                <td> {{ __($category->status == 1 ? 'Published' : 'Unpublished') }} </td>
-                                <td> {{ __($category->serial) }} </td>
-                                <td> {{ $category->created_at->format('Y-m-d  H:i:s') }} </td>
-                                <td> {{ $category->updated_at == $category->created_at ? 'Not updated' : $category->updated_at->format('Y-m-d H:i:s') }}
+                                <td> {{ __($subCategoriesItem->sub_category_name) }} </td>
+                                <td> {{ __($subCategoriesItem->slug) }} </td>
+                                <td> {{ __($subCategoriesItem->status == 1 ? 'Published' : 'Unpublished') }} </td>
+                                <td> {{ __($subCategoriesItem->serial) }} </td>
+                                <td> {{ $subCategoriesItem->created_at->format('Y-m-d  H:i:s') }} </td>
+                                <td> {{ $subCategoriesItem->updated_at == $category->created_at ? 'Not updated' : $category->updated_at->format('Y-m-d H:i:s') }}
                                 </td>
                                 <td class="d-flex justify-content-evenly">
                                     <a href="{{ route('category.show', $category->id) }}">
