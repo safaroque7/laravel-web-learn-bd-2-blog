@@ -13,9 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // return 'My name is Bayzid, Senior Software Engineer';
         $categories = Category::with('sub_categories')->orderBy('serial', 'asc')->get();
-        // dd($categories);
         return view('backend.pages.modules.category.index', compact('categories'));
     }
 

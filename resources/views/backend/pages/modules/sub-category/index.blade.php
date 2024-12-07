@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h2> Sub Category List </h2>
-                <a href="{{ route('category.create') }}"> <button class="btn btn-secondary rounded-circle"> <i
+                <a href="{{ route('sub-categories.create') }}"> <button class="btn btn-secondary rounded-circle"> <i
                             class="fa-solid fa-plus"></i> </button> </a>
             </div>
             <div class="card-body">
@@ -40,21 +40,21 @@
                                 <td> {{ __($subCategoryItem->status == 1 ? 'Published' : 'Unpublished') }} </td>
                                 <td> {{ __($subCategoryItem->serial) }} </td>
                                 <td> {{ $subCategoryItem->created_at->format('Y-m-d  H:i:s') }} </td>
-                                <td> {{ $subCategoryItem->updated_at == $category->created_at ? 'Not updated' : $category->updated_at->format('Y-m-d H:i:s') }}
+                                <td> {{ $subCategoryItem->updated_at == $subCategoryItem->created_at ? 'Not updated' : $subCategoryItem->updated_at->format('Y-m-d H:i:s') }}
                                 </td>
                                 <td class="d-flex justify-content-evenly">
-                                    <a href="{{ route('sub-category.show', $subCategoryItem->id) }}">
+                                    <a href="{{ route('sub-categories.show', $subCategoryItem->id) }}">
                                         <button class="btn btn-info btn-sm text-white">
                                             <i class="fa-solid fa-eye"></i>
                                         </button>
                                     </a>
-                                    <a href="{{ route('sub-category.edit', $subCategoryItem->id) }}">
+                                    <a href="{{ route('sub-categories.edit', $subCategoryItem->id) }}">
                                         <button class="btn btn-warning btn-sm">
                                             <i class="fa-solid fa-edit"></i>
                                         </button>
                                     </a>
 
-                                    <form action="{{ route('sub-category.destroy', $subCategoryItem->id) }}" class="d-inline"
+                                    <form action="{{ route('sub-categories.destroy', $subCategoryItem->id) }}" class="d-inline"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')

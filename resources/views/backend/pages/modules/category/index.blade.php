@@ -30,15 +30,16 @@
                         @php
                             $sl = 1;
                         @endphp
+                        
                         @foreach ($categories as $category)
                             <tr>
                                 <td> {{ __($sl++) }} </td>
                                 <td> 
-                                    <p> {{ __($category->category_name) }}  </p>
-                                    <p> 
+                                    <p class="mb-0"> {{ __($category->category_name) }}  </p>
+                                    <p class="mb-0"> 
                                         <small> 
-                                            @foreach($categories as $sub_category) 
-                                            <span class="me-2 text-success"> {{ __($sub_category->sub_category_name) }} </span>
+                                            @foreach($category?->sub_categories as $sc) 
+                                            <span class="me-2 text-success"> {{ __($sc->sub_category_name) }} </span>
                                             @endforeach()
                                         </small>
                                     </p>

@@ -30,10 +30,10 @@
 
                     <div class="mb-md-4 md-2">
                         <label for="category-name" class="form-label fw-bold"> Category Name </label>
-                        <select name="category_name" id="category-name" class="form-control">
+                        <select name="category_id" id="category-name" class="form-control">
                             <option value="" disableed selected> -- Select Category -- </option>
                             @foreach ($allCategoryNames as $id => $category_name)
-                                <option value="{{ __($category_name) }}"> {{ __($category_name) }} </option>
+                                <option value="{{ __($id) }}"> {{ __($category_name) }} </option>
                             @endforeach
                         </select>
 
@@ -45,8 +45,8 @@
 
 
                     <div class="mb-md-4 md-2">
-                        <label for="name" class="form-label fw-bold"> Sub Category Name </label>
-                        <input type="text" name="sub_category_name" id="name" class="form-control"
+                        <label for="subCategoryName" class="form-label fw-bold"> Sub Category Name </label>
+                        <input type="text" name="sub_category_name" id="subCategoryName" class="form-control"
                             value="{{ old('sub_category_name') }}">
                         @error('sub_category_name')
                             <div class="text-danger pt-md-2 pt-1"> <i class="fa-solid fa-triangle-exclamation"></i>

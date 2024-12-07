@@ -12,7 +12,8 @@ class SubCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    
+     public function index()
     {
         $subCategoriesCollection = SubCategory::with(['category'])->orderBy('serial', 'asc')->get();
         return view('backend.pages.modules.sub-category.index', compact('subCategoriesCollection'));
@@ -26,6 +27,8 @@ class SubCategoryController extends Controller
         $allCategoryNames = Category::pluck('category_name', 'id');
         return view('backend.pages.modules.sub-category.create', compact('allCategoryNames'));
     }
+
+    
 
     /**
      * Store a newly created resource in storage.
@@ -41,8 +44,7 @@ class SubCategoryController extends Controller
             $sub_category['serial'] = 100000;
         }
 
-        SubCategory::create($sub_category);
-
+        $subCategoriesCollection = SubCategory::create($sub_category);
         return view('backend.pages.modules.sub-category.index', compact('subCategoriesCollection'));
     }
 

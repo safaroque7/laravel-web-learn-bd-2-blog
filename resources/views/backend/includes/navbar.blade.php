@@ -14,8 +14,8 @@
     </form>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown d-flex align-items-center"> 
-        <a href="{{ ('/') }}" class="text-white text-decoration-none"> Website </a>    
+        <li class="nav-item dropdown d-flex align-items-center">
+            <a href="{{ '/' }}" class="text-white text-decoration-none"> Website </a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -29,12 +29,33 @@
                     <hr class="dropdown-divider" />
                 </li>
                 <li>
-                    <form action="{{ route('logout') }}" method="POST">
+                    <form id="logout_form" action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to logout?')"> Logout </button>
+                        <button type="submit" class="dropdown-item" id="logout_button"> Logout
+                        </button>
                     </form>
                 </li>
             </ul>
         </li>
     </ul>
 </nav>
+
+@push('script')
+    <script>
+        $('#logout_button').on('click', function() {
+            Swal.fire({
+                title: "Are you sure to logout?",
+                text: "You will be logged out from dashboard",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Logout!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#logout_form').submit()
+                }
+            })
+        })
+    </script>
+@endpush
