@@ -37,7 +37,7 @@
                                 <td> {{ __($subCategoryItem->sub_category_name) }} </td>
                                 <td> {{ __($subCategoryItem->category->category_name) }} </td>
                                 <td> {{ __($subCategoryItem->slug) }} </td>
-                                <td> {{ __($subCategoryItem->status == 1 ? 'Published' : 'Unpublished') }} </td>
+                                <td> {{ __($subCategoryItem->status == 1 ? 'Published' : ($subCategoryItem->status == 3 ? 'Draft' : 'Unpublished')) }} </td>
                                 <td> {{ __($subCategoryItem->serial) }} </td>
                                 <td> {{ $subCategoryItem->created_at->format('Y-m-d  H:i:s') }} </td>
                                 <td> {{ $subCategoryItem->updated_at == $subCategoryItem->created_at ? 'Not updated' : $subCategoryItem->updated_at->format('Y-m-d H:i:s') }}

@@ -1,13 +1,13 @@
 @extends('backend.layout.master')
 
-@section('page_title', 'Category Details')
+@section('page_title', 'Sub Category Details')
 
 @section('category')
     <div class="col-md-6 mx-auto">
 
         <div class="card">
             <div class="card-header">
-                <h2> Category Details </h2>
+                <h2> Sub Category Details </h2>
             </div>
             <div class="card-body">
 
@@ -15,42 +15,47 @@
 
                     <tr>
                         <th> ID </th>
-                        <td> {{ $category->id }} </td>
+                        <td> {{ $subCategory->id }} </td>
                     </tr>
 
                     <tr>
-                        <th> Name </th>
-                        <td> {{ $category->name }} </td>
+                        <th> Caegory Name </th>
+                        <td> {{ $subCategory->category->category_name }} </td>
+                    </tr>
+
+                    <tr>
+                        <th> Sub Caegory Name </th>
+                        <td> {{ $subCategory->sub_category_name }} </td>
                     </tr>
 
                     <tr>
                         <th> Slug Name </th>
-                        <td> {{ $category->slug }} </td>
+                        <td> {{ $subCategory->slug }} </td>
                     </tr>
 
                     <tr>
                         <th> Slug ID </th>
-                        <td> {{ $category->serial }} </td>
+                        <td> {{ $subCategory->serial }} </td>
                     </tr>
 
                     <tr>
                         <th> Status </th>
-                        <td> {{ $category->status }} </td>
+                        <td> {{ $subCategory->status == 1 ? 'Published' : ($subCategory->status == 3 ? 'Draft' : 'Unpublished'); }} </td>
                     </tr>
 
                     <tr>
                         <th> Order By </th>
-                        <td> {{ $category->serial }} </td>
+                        <td> {{ $subCategory->serial }} </td>
                     </tr>
 
                     <tr>
                         <th> Created At </th>
-                        <td> {{ $category->created_at->format('Y-m-d  H:i:s') }} </td>
+                        <td> {{ $subCategory->created_at->format('Y-m-d  H:i:s') }} </td>
                     </tr>
 
                     <tr>
                         <th> Updated At</th>
-                        <td> {{ $category->updated_at == $category->created_at ? 'Not updated' : $category->updated_at->format('Y-m-d H:i:s') }}
+                        <td> {{ $subCategory->updated_at == $subCategory->created_at ? 'Not updated' : $subCategory->updated_at->format('Y-m-d H:i:s') }}
                     </tr>
 
                 </table>
