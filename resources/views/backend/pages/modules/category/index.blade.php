@@ -33,7 +33,17 @@
                         @foreach ($categories as $category)
                             <tr>
                                 <td> {{ __($sl++) }} </td>
-                                <td> {{ __($category->category_name) }} </td>
+                                <td> 
+                                    <p> {{ __($category->category_name) }}  </p>
+                                    <p> 
+                                        <small> 
+                                            @foreach($categories as $sub_category) 
+                                            <span class="me-2 text-success"> {{ __($sub_category->sub_category_name) }} </span>
+                                            @endforeach()
+                                        </small>
+                                    </p>
+
+                                </td>
                                 <td> {{ __($category->slug) }} </td>
                                 <td> {{ __($category->status == 1 ? 'Published' : 'Unpublished') }} </td>
                                 <td> {{ __($category->serial) }} </td>

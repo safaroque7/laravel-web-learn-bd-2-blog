@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('sub_category_name')->nullable();
             $table->string('slug')->nullable();
+            $table->string('slug_id')->nullable();
+            $table->tinyInteger('status')->nullable();            
             $table->integer('serial')->nullable();
-            $table->tinyInteger('status')->nullable();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

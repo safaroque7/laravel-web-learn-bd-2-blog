@@ -3,7 +3,7 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <div class="sb-sidenav-menu-heading">Core</div>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('back.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
@@ -19,6 +19,7 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('category.index') }}">Category List</a>
                         <a class="nav-link" href="{{ route('category.create') }}"> Create Category </a>
+                        <a class="nav-link" href="{{ route('sub-categories.index') }}"> Sub Category List </a>
                         <a class="nav-link" href="{{ route('sub-categories.create') }}"> Create Sub Category </a>
 
                     </nav>

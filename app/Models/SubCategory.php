@@ -13,6 +13,6 @@ class SubCategory extends Model
     protected $guarded = [];
     
     public function category(){
-        $this->belongsTo(Classcategory)
-    }
+        return $this->belongsTo(Category::class);
+    }   
 }

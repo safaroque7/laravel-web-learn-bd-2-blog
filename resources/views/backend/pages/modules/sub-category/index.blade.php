@@ -17,6 +17,7 @@
                     <thead>
                         <tr>
                             <th class="text-center"> SL </th>
+                            <th class="text-center"> Sub Category Name </th>
                             <th class="text-center"> Category Name </th>
                             <th class="text-center"> Slug </th>
                             <th class="text-center"> Status </th>
@@ -30,29 +31,30 @@
                         @php
                             $sl = 1;
                         @endphp
-                        @foreach ($subCategoriesCollection as $subCategoriesItem)
+                        @foreach ($subCategoriesCollection as $subCategoryItem)
                             <tr>
                                 <td> {{ __($sl++) }} </td>
-                                <td> {{ __($subCategoriesItem->sub_category_name) }} </td>
-                                <td> {{ __($subCategoriesItem->slug) }} </td>
-                                <td> {{ __($subCategoriesItem->status == 1 ? 'Published' : 'Unpublished') }} </td>
-                                <td> {{ __($subCategoriesItem->serial) }} </td>
-                                <td> {{ $subCategoriesItem->created_at->format('Y-m-d  H:i:s') }} </td>
-                                <td> {{ $subCategoriesItem->updated_at == $category->created_at ? 'Not updated' : $category->updated_at->format('Y-m-d H:i:s') }}
+                                <td> {{ __($subCategoryItem->sub_category_name) }} </td>
+                                <td> {{ __($subCategoryItem->category->category_name) }} </td>
+                                <td> {{ __($subCategoryItem->slug) }} </td>
+                                <td> {{ __($subCategoryItem->status == 1 ? 'Published' : 'Unpublished') }} </td>
+                                <td> {{ __($subCategoryItem->serial) }} </td>
+                                <td> {{ $subCategoryItem->created_at->format('Y-m-d  H:i:s') }} </td>
+                                <td> {{ $subCategoryItem->updated_at == $category->created_at ? 'Not updated' : $category->updated_at->format('Y-m-d H:i:s') }}
                                 </td>
                                 <td class="d-flex justify-content-evenly">
-                                    <a href="{{ route('category.show', $category->id) }}">
+                                    <a href="{{ route('sub-category.show', $subCategoryItem->id) }}">
                                         <button class="btn btn-info btn-sm text-white">
                                             <i class="fa-solid fa-eye"></i>
                                         </button>
                                     </a>
-                                    <a href="{{ route('category.edit', $category->id) }}">
+                                    <a href="{{ route('sub-category.edit', $subCategoryItem->id) }}">
                                         <button class="btn btn-warning btn-sm">
                                             <i class="fa-solid fa-edit"></i>
                                         </button>
                                     </a>
 
-                                    <form action="{{ route('category.destroy', $category->id) }}" class="d-inline"
+                                    <form action="{{ route('sub-category.destroy', $subCategoryItem->id) }}" class="d-inline"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')

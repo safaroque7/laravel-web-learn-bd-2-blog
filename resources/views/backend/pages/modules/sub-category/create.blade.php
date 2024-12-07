@@ -45,7 +45,7 @@
 
 
                     <div class="mb-md-4 md-2">
-                        <label for="name" class="form-label fw-bold"> Sub Category Name sss </label>
+                        <label for="name" class="form-label fw-bold"> Sub Category Name </label>
                         <input type="text" name="sub_category_name" id="name" class="form-control"
                             value="{{ old('sub_category_name') }}">
                         @error('sub_category_name')

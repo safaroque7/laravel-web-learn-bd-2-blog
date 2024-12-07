@@ -14,7 +14,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subCategoriesCollection = SubCategory::with(['category'])->orderBy('serial', 'asc')->get();
+        return view('backend.pages.modules.sub-category.index', compact('subCategoriesCollection'));
     }
 
     /**
